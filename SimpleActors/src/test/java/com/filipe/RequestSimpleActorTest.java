@@ -25,9 +25,9 @@ class RequestSimpleActorTest {
     @RepeatedTest(3)
     void tellTest() {
         ActorRef<Command> simpleActor = testKit.spawn(RequestSimpleActor.create());
-        TestProbe<String> replyToActorTestProbe = testKit.createTestProbe();
-        simpleActor.tell(new RequestCommand("First message", replyToActorTestProbe.getRef()));
-        var response = replyToActorTestProbe.receiveMessage();
+        TestProbe<String> replyToActorProbe = testKit.createTestProbe();
+        simpleActor.tell(new RequestCommand("First message", replyToActorProbe.getRef()));
+        var response = replyToActorProbe.receiveMessage();
 
         Assertions.assertTrue(response.contains("Response to: First message"),
                 "Log message should contain 'Received command: First message'");
@@ -65,7 +65,5 @@ class RequestSimpleActorTest {
         Assertions.assertTrue(response.contains("Response to: Hello Actor!"),
                 "Response should contain the message we sent");
     }
-
-
 
 }
