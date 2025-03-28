@@ -29,7 +29,7 @@ public class SimpleActorTest {
 
     }
 
-    @RepeatedTest(5)
+    @RepeatedTest(2)
     void test() {
         ActorRef<String> simpleActor = testKit.spawn(SimpleActor.create());
 

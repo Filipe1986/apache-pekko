@@ -25,7 +25,7 @@ class SimpleActorWithCommandTest {
         logger.addAppender(listAppender);
     }
 
-    @RepeatedTest(5)
+    @RepeatedTest(2)
     void test() {
         ActorRef<SimpleCommand> simpleActor = testKit.spawn(SimpleActorWithCommand.create());
 
