@@ -12,6 +12,7 @@
 
   <modules>
     <module>SimpleActors</module>
+    <module>Commands</module>
   </modules>
 
   <properties>
