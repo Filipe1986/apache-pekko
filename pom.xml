@@ -5,27 +5,66 @@
   <groupId>com.filipe</groupId>
   <artifactId>apache-pekko</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>apache-pekko</name>
   <url>http://maven.apache.org</url>
+
+  <modules>
+    <module>SimpleActors</module>
+    <module>Commands</module>
+  </modules>
 
   <properties>
     <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
+    <pekko-actor.version>1.0.1</pekko-actor.version>
+
+    <lombok.version>1.18.36</lombok.version>
+    <surefire-junit47.version>3.0.0-M7</surefire-junit47.version>
 
   </properties>
 
   <dependencies>
 
-    <!-- junit -->
+    <!-- Pekko -->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.12.1</version>
+      <groupId>org.apache.pekko</groupId>
+      <artifactId>pekko-persistence-typed_3</artifactId>
+      <version>${pekko-actor.version}</version>
+    </dependency>
+
+    <!-- pekko-actor-testkit -->
+    <dependency>
+      <groupId>org.apache.pekko</groupId>
+      <artifactId>pekko-actor-testkit-typed_3</artifactId>
+      <version>${pekko-actor.version}</version>
       <scope>test</scope>
     </dependency>
+
+
+
+
+
   </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.12.1</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- Lombok -->
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
 </project>
